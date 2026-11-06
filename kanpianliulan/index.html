@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>看片浏览器-看片浏览器网页版_看片浏览器怎么用_视频播放浏览器下载</title>
+<meta name="description" content="看片浏览器是一款以视频播放为核心的浏览器，支持网页视频直达播放、多标签管理与清爽观看模式。了解看片浏览器的网页版入口、使用方式与下载说明。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230d1b2a'/%3E%3Ccircle cx='32' cy='32' r='19' fill='none' stroke='%2338e0b0' stroke-width='4'/%3E%3Cpath d='M27 23l16 9-16 9z' fill='%2338e0b0'/%3E%3C/svg%3E">
+<style>
+  :root{
+    --ink:#0d1b2a;
+    --ink-2:#16283d;
+    --paper:#f4f7f9;
+    --card:#ffffff;
+    --mint:#12b58c;
+    --mint-soft:#e2f7f0;
+    --text:#1c2b3a;
+    --muted:#5b6b7b;
+    --line:#dfe7ec;
+    --radius:16px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",system-ui,sans-serif;
+    background:var(--paper);
+    color:var(--text);
+    line-height:1.75;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;}
+  img,svg{max-width:100%;}
+  .wrap{width:min(1120px,92vw);margin:0 auto;}
+
+  /* header */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(13,27,42,.96);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid rgba(255,255,255,.08);
+  }
+  .nav{
+    display:flex;align-items:center;justify-content:space-between;
+    gap:16px;min-height:64px;
+  }
+  .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:#fff;flex-shrink:0;}
+  .brand .mark{width:34px;height:34px;display:block;}
+  .brand .name{font-size:1.05rem;font-weight:700;letter-spacing:.5px;white-space:nowrap;}
+  .nav ul{
+    display:flex;gap:24px;list-style:none;margin:0;padding:0;
+    font-size:.92rem;
+  }
+  .nav ul a{color:#c3d2de;text-decoration:none;transition:color .2s;}
+  .nav ul a:hover{color:var(--mint);}
+  .nav .cta{
+    background:var(--mint);color:#06231b;text-decoration:none;
+    padding:8px 18px;border-radius:999px;font-weight:700;font-size:.9rem;
+    white-space:nowrap;
+  }
+  .nav .cta:hover{filter:brightness(1.08);}
+  @media(max-width:760px){
+    .nav ul{display:none;}
+    .nav{min-height:58px;}
+    .brand .name{font-size:.98rem;}
+  }
+
+  /* hero */
+  .hero{
+    background:
+      radial-gradient(circle at 82% 18%,rgba(18,181,140,.22),transparent 46%),
+      linear-gradient(160deg,#0d1b2a 0%,#142c40 62%,#0d1b2a 100%);
+    color:#fff;
+    padding:64px 0 72px;
+  }
+  .hero-grid{
+    display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center;
+  }
+  .eyebrow{
+    display:inline-block;font-size:.78rem;letter-spacing:2px;
+    color:var(--mint);border:1px solid rgba(18,181,140,.5);
+    padding:4px 12px;border-radius:999px;margin-bottom:18px;
+  }
+  h1{
+    font-size:clamp(1.85rem,4.4vw,2.85rem);
+    line-height:1.28;margin:0 0 18px;font-weight:800;letter-spacing:.5px;
+  }
+  .hero p.lead{
+    color:#c6d5e2;font-size:1.02rem;margin:0 0 26px;max-width:34em;
+  }
+  .hero-actions{display:flex;flex-wrap:wrap;gap:14px;}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:12px 26px;border-radius:12px;text-decoration:none;
+    font-weight:700;font-size:.95rem;transition:transform .18s,filter .18s;
+  }
+  .btn:hover{transform:translateY(-2px);}
+  .btn-primary{background:var(--mint);color:#06231b;}
+  .btn-ghost{border:1px solid rgba(255,255,255,.35);color:#fff;}
+  .btn-ghost:hover{border-color:var(--mint);color:var(--mint);}
+  .btn[aria-disabled="true"]{opacity:.85;cursor:default;pointer-events:none;}
+  .hero-facts{
+    display:flex;flex-wrap:wrap;gap:26px;margin-top:34px;
+    padding-top:22px;border-top:1px solid rgba(255,255,255,.13);
+  }
+  .hero-facts div strong{display:block;font-size:1.25rem;color:var(--mint);}
+  .hero-facts div span{font-size:.82rem;color:#9fb2c2;}
+
+  .player-card{
+    background:rgba(255,255,255,.05);
+    border:1px solid rgba(255,255,255,.14);
+    border-radius:20px;padding:18px;
+  }
+  .player-screen{
+    border-radius:12px;overflow:hidden;background:#08131f;
+    aspect-ratio:16/10;display:flex;align-items:center;justify-content:center;
+  }
+  .player-meta{display:flex;justify-content:space-between;align-items:center;margin-top:14px;font-size:.82rem;color:#9fb2c2;}
+  .dots{display:flex;gap:6px;}
+  .dots i{width:8px;height:8px;border-radius:50%;background:#2e4459;display:block;}
+  .dots i:first-child{background:var(--mint);}
+
+  @media(max-width:900px){
+    .hero-grid{grid-template-columns:1fr;gap:34px;}
+    .hero{padding:44px 0 52px;}
+  }
+
+  /* sections */
+  section{padding:64px 0;}
+  section.alt{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .sec-head{max-width:44em;margin-bottom:34px;}
+  .sec-head .kicker{
+    color:var(--mint);font-size:.8rem;font-weight:700;letter-spacing:2px;
+    display:block;margin-bottom:8px;
+  }
+  h2{font-size:clamp(1.3rem,2.6vw,1.7rem);margin:0 0 12px;font-weight:800;color:var(--ink);}
+  .sec-head p{margin:0;color:var(--muted);font-size:.96rem;}
+
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+  .card{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    padding:26px 24px;transition:box-shadow .2s,transform .2s;
+  }
+  .card:hover{box-shadow:0 12px 28px rgba(13,27,42,.09);transform:translateY(-3px);}
+  .card .ico{
+    width:44px;height:44px;border-radius:12px;background:var(--mint-soft);
+    display:flex;align-items:center;justify-content:center;margin-bottom:16px;
+  }
+  .card h3{font-size:1.05rem;margin:0 0 10px;font-weight:700;color:var(--ink);}
+  .card p{margin:0;font-size:.92rem;color:var(--muted);}
+  @media(max-width:900px){.cards{grid-template-columns:1fr 1fr;}}
+  @media(max-width:600px){.cards{grid-template-columns:1fr;}}
+
+  /* steps */
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:0;counter-reset:s;}
+  .step{
+    position:relative;padding:0 26px 0 0;
+  }
+  .step::before{
+    counter-increment:s;content:"0" counter(s);
+    font-size:2.4rem;font-weight:800;color:var(--mint-soft);
+    display:block;line-height:1;margin-bottom:10px;
+    -webkit-text-stroke:1px var(--mint);
+  }
+  .step h3{font-size:1rem;margin:0 0 8px;color:var(--ink);}
+  .step p{margin:0;font-size:.92rem;color:var(--muted);}
+  @media(max-width:760px){
+    .steps{grid-template-columns:1fr;gap:26px;}
+    .step{padding-right:0;}
+  }
+
+  /* feature list */
+  .feat-row{
+    display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:center;
+  }
+  .feat-row + .feat-row{margin-top:56px;}
+  .feat-visual{
+    background:linear-gradient(150deg,#0d1b2a,#1b3a50);
+    border-radius:20px;padding:26px;color:#fff;min-height:220px;
+    display:flex;flex-direction:column;justify-content:center;gap:14px;
+  }
+  .feat-visual .tag{
+    font-size:.78rem;color:var(--mint);letter-spacing:1px;
+  }
+  .bar{height:10px;border-radius:6px;background:rgba(255,255,255,.12);overflow:hidden;}
+  .bar span{display:block;height:100%;background:var(--mint);border-radius:6px;}
+  .feat-visual small{color:#9fb2c2;font-size:.8rem;}
+  .feat-text h3{font-size:1.2rem;margin:0 0 12px;color:var(--ink);}
+  .feat-text p{margin:0 0 14px;font-size:.95rem;color:var(--muted);}
+  .feat-text ul{margin:0;padding-left:18px;font-size:.92rem;color:var(--muted);}
+  .feat-text li{margin-bottom:6px;}
+  @media(max-width:860px){
+    .feat-row{grid-template-columns:1fr;gap:24px;}
+    .feat-row.rev .feat-visual{order:2;}
+  }
+
+  /* table */
+  .table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius);background:#fff;}
+  table{border-collapse:collapse;width:100%;font-size:.92rem;min-width:520px;}
+  th,td{padding:14px 18px;text-align:left;border-bottom:1px solid var(--line);}
+  th{background:#f0f5f7;color:var(--ink);font-weight:700;font-size:.86rem;letter-spacing:.5px;}
+  tr:last-child td{border-bottom:none;}
+  td:first-child{font-weight:600;color:var(--ink);}
+  td{color:var(--muted);}
+
+  /* faq */
+  .faq{display:grid;gap:14px;}
+  details{
+    background:#fff;border:1px solid var(--line);border-radius:12px;
+    padding:16px 20px;
+  }
+  details[open]{border-color:var(--mint);}
+  summary{
+    cursor:pointer;font-weight:700;color:var(--ink);font-size:.98rem;
+    list-style:none;display:flex;justify-content:space-between;gap:12px;
+  }
+  summary::-webkit-details-marker{display:none;}
+  summary::after{content:"+";color:var(--mint);font-weight:700;font-size:1.1rem;line-height:1;}
+  details[open] summary::after{content:"−";}
+  details p{margin:12px 0 0;font-size:.93rem;color:var(--muted);}
+
+  /* cta band */
+  .band{
+    background:linear-gradient(120deg,#0d1b2a,#17404f);
+    border-radius:22px;color:#fff;padding:44px 40px;
+    display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:24px;
+  }
+  .band h2{color:#fff;margin:0 0 8px;}
+  .band p{margin:0;color:#b9cbd8;font-size:.95rem;max-width:36em;}
+  .band .btn-primary{flex-shrink:0;}
+
+  /* footer */
+  footer{
+    background:#0a1622;color:#8fa3b5;padding:46px 0 30px;font-size:.86rem;
+    border-top:1px solid rgba(255,255,255,.06);
+  }
+  .foot-grid{display:flex;flex-wrap:wrap;justify-content:space-between;gap:30px;}
+  .foot-brand{max-width:320px;}
+  .foot-brand .brand{margin-bottom:12px;}
+  .foot-brand p{margin:0;line-height:1.8;}
+  .foot-links{display:flex;gap:56px;flex-wrap:wrap;}
+  .foot-links h4{color:#fff;font-size:.86rem;margin:0 0 10px;letter-spacing:1px;}
+  .foot-links a{display:block;text-decoration:none;margin-bottom:7px;color:#8fa3b5;}
+  .foot-links a:hover{color:var(--mint);}
+  .copyright{
+    margin-top:34px;padding-top:18px;border-top:1px solid rgba(255,255,255,.08);
+    font-size:.8rem;color:#63788a;
+  }
+</style>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#top" aria-label="看片浏览器首页">
+      <svg class="mark" viewBox="0 0 64 64" aria-hidden="true">
+        <rect width="64" height="64" rx="14" fill="#0d1b2a"/>
+        <circle cx="32" cy="32" r="19" fill="none" stroke="#12b58c" stroke-width="4"/>
+        <path d="M27 23l16 9-16 9z" fill="#12b58c"/>
+      </svg>
+      <span class="name">看片浏览器</span>
+    </a>
+    <nav aria-label="主导航">
+      <ul>
+        <li><a href="#features">核心功能</a></li>
+        <li><a href="#howto">使用方式</a></li>
+        <li><a href="#compare">版本对比</a></li>
+        <li><a href="#faq">常见问题</a></li>
+      </ul>
+    </nav>
+    <a class="cta" href="#download">获取看片浏览器</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow">视频播放型浏览器</span>
+        <h1>看片浏览器</h1>
+        <p class="lead">看片浏览器把网页视频播放放在第一位：打开链接即可进入观看页面，支持多标签并行、清爽播放模式与播放进度记忆，让追剧、看片、浏览资料在同一个窗口内完成。</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#download">下载看片浏览器</a>
+          <a class="btn btn-ghost" href="#howto">查看使用方式</a>
+        </div>
+        <div class="hero-facts">
+          <div><strong>多标签</strong><span>并行切换不丢进度</span></div>
+          <div><strong>清爽模式</strong><span>减少页面干扰元素</span></div>
+          <div><strong>跨端</strong><span>桌面与移动端一致</span></div>
+        </div>
+      </div>
+      <div class="player-card" aria-hidden="true">
+        <div class="player-screen">
+          <svg viewBox="0 0 200 120" width="86%">
+            <rect x="8" y="8" width="184" height="104" rx="10" fill="#0f2233"/>
+            <circle cx="100" cy="58" r="26" fill="none" stroke="#12b58c" stroke-width="3" opacity=".8"/>
+            <path d="M92 46l22 12-22 12z" fill="#12b58c"/>
+            <rect x="24" y="92" width="152" height="6" rx="3" fill="#1d3a4f"/>
+            <rect x="24" y="92" width="86" height="6" rx="3" fill="#12b58c"/>
+          </svg>
+        </div>
+        <div class="player-meta">
+          <span>播放中 · 已记忆进度</span>
+          <span class="dots"><i></i><i></i><i></i></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section id="features">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="kicker">核心功能</span>
+        <h2>看片浏览器围绕观看体验设计的能力</h2>
+        <p>作为一款以播放为主线的浏览器，看片浏览器的功能取舍集中在“找得到、放得顺、看得清”三件事上，而不是堆叠无关插件。</p>
+      </div>
+      <div class="cards">
+        <article class="card">
+          <div class="ico">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#12b58c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v14H4z"/><path d="M10 9l5 3-5 3z"/></svg>
+          </div>
+          <h3>视频直达播放</h3>
+          <p>识别页面中的视频内容并直接进入播放界面，减少在广告与跳转页之间反复点击的麻烦，适合追剧与长片观看。</p>
+        </article>
+        <article class="card">
+          <div class="ico">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#12b58c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg>
+          </div>
+          <h3>多标签并行</h3>
+          <p>同时打开多个片源或资料页，切换标签不会中断其他页面的播放，适合对照字幕、比对版本或边看边查。</p>
+        </article>
+        <article class="card">
+          <div class="ico">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#12b58c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M5 8l7-5 7 5M5 16l7 5 7-5"/></svg>
+          </div>
+          <h3>清爽观看模式</h3>
+          <p>隐藏侧边栏与悬浮元素，把画面留在视觉中心。看片浏览器在播放页提供一键切换，退出后恢复原页面结构。</p>
+        </article>
+        <article class="card">
+          <div class="ico">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#12b58c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+          </div>
+          <h3>进度记忆</h3>
+          <p>关闭页面后再次打开同一链接，看片浏览器会保留上次的播放位置，长篇内容不必从头找回进度。</p>
+        </article>
+        <article class="card">
+          <div class="ico">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#12b58c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l3 8 4-16 3 8h4"/></svg>
+          </div>
+          <h3>播放画质切换</h3>
+          <p>在播放器内切换清晰度，网络波动时自动降档，稳定后再回升，减少卡顿带来的中断感。</p>
+        </article>
+        <article class="card">
+          <div class="ico">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#12b58c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg>
+          </div>
+          <h3>收藏与历史</h3>
+          <p>把常看的内容加入收藏，历史记录按时间排列。看片浏览器用一页列表管理观看轨迹，方便下次续看。</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW TO -->
+  <section class="alt" id="howto">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="kicker">使用方式</span>
+        <h2>三步开始用看片浏览器看片</h2>
+        <p>看片浏览器的上手路径很短：安装后打开视频链接，播放器会自动接管观看流程。下面是常见的三步操作。</p>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <h3>安装并启动</h3>
+          <p>获取看片浏览器安装包后完成安装，首次启动会引导设置默认播放行为与主页入口。</p>
+        </div>
+        <div class="step">
+          <h3>打开视频链接</h3>
+          <p>在地址栏输入或粘贴视频页地址，看片浏览器会识别页面中的播放区域并直接呈现。</p>
+        </div>
+        <div class="step">
+          <h3>调整与续看</h3>
+          <p>按需切换清晰度、开启清爽模式；关闭后再次打开同一页面，播放进度会自动恢复。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DETAIL -->
+  <section>
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="kicker">场景说明</span>
+        <h2>看片浏览器适合哪些使用场景</h2>
+        <p>同一款浏览器在不同场景下的侧重点并不相同。看片浏览器的设计目标是让播放路径尽可能短，同时保留浏览网页的基本能力。</p>
+      </div>
+
+      <div class="feat-row">
+        <div class="feat-visual" aria-hidden="true">
+          <span class="tag">长剧续看</span>
+          <div class="bar"><span style="width:68%"></span></div>
+          <small>上次看到 68% · 自动续播</small>
+          <div class="bar"><span style="width:32%"></span></div>
+          <small>第二集 · 待观看</small>
+          <div class="bar"><span style="width:12%"></span></div>
+          <small>第三集 · 未开始</small>
+        </div>
+        <div class="feat-text">
+          <h3>追剧与长篇内容</h3>
+          <p>剧集通常分布在多个页面，反复寻找进度是最耗时的环节。看片浏览器的进度记忆与收藏列表把续看动作压缩到一次点击。</p>
+          <ul>
+            <li>同一剧集的多集链接可归入一个收藏分组</li>
+            <li>关闭窗口后进度仍保存在本地</li>
+            <li>多标签对照字幕或不同版本</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="feat-row rev">
+        <div class="feat-visual" aria-hidden="true">
+          <span class="tag">边看边查</span>
+          <svg viewBox="0 0 260 110" width="100%">
+            <rect x="4" y="10" width="150" height="90" rx="8" fill="#10304a"/>
+            <circle cx="79" cy="55" r="22" fill="none" stroke="#12b58c" stroke-width="2.5"/>
+            <path d="M72 44l18 11-18 11z" fill="#12b58c"/>
+            <rect x="164" y="10" width="92" height="26" rx="6" fill="#1b3a50"/>
+            <rect x="164" y="44" width="92" height="26" rx="6" fill="#1b3a50"/>
+            <rect x="164" y="78" width="60" height="22" rx="6" fill="#12b58c" opacity=".7"/>
+          </svg>
+        </div>
+        <div class="feat-text">
+          <h3>看片同时查资料</h3>
+          <p>纪录片、课程与影评类内容常需要边看边查。看片浏览器把播放页与资料页放在同一窗口的不同标签中，切换时播放不中断。</p>
+          <ul>
+            <li>标签之间切换不重新加载播放器</li>
+            <li>网页正文与视频画面可并列参考</li>
+            <li>历史记录保留检索路径</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPARE -->
+  <section class="alt" id="compare">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="kicker">版本对比</span>
+        <h2>看片浏览器不同版本的能力范围</h2>
+        <p>下表列出看片浏览器在桌面端与移动端上的功能覆盖情况，便于按自己的设备选择合适版本。</p>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>功能项</th><th>桌面端</th><th>移动端</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>视频直达播放</td><td>支持</td><td>支持</td></tr>
+            <tr><td>多标签并行</td><td>支持</td><td>支持，数量受内存影响</td></tr>
+            <tr><td>清爽观看模式</td><td>支持</td><td>支持</td></tr>
+            <tr><td>播放进度记忆</td><td>本地保存</td><td>本地保存</td></tr>
+            <tr><td>画质手动切换</td><td>支持</td><td>支持</td></tr>
+            <tr><td>收藏分组</td><td>支持</td><td>支持</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="kicker">常见问题</span>
+        <h2>关于看片浏览器的常见疑问</h2>
+        <p>以下回答针对访问者最常提出的使用问题，内容以看片浏览器当前实际提供的能力为准。</p>
+      </div>
+      <div class="faq">
+        <details open>
+          <summary>看片浏览器和普通浏览器有什么区别？</summary>
+          <p>普通浏览器以网页浏览为主，播放器只是页面的一部分。看片浏览器在保留浏览能力的前提下，把视频识别、播放控制、进度记忆和清爽模式作为主要功能，减少观看前后的操作步骤。</p>
+        </details>
+        <details>
+          <summary>看片浏览器需要注册账号吗？</summary>
+          <p>观看与浏览功能无需注册即可使用。收藏与进度记录保存在本地，更换设备时不会自动同步。</p>
+        </details>
+        <details>
+          <summary>看片浏览器支持哪些视频格式？</summary>
+          <p>看片浏览器通过网页播放器播放内容，实际可播放的格式取决于页面所使用的播放协议与编码。常见网页视频格式均可正常呈现。</p>
+        </details>
+        <details>
+          <summary>播放卡顿时可以怎么处理？</summary>
+          <p>可先在播放器内降低清晰度，或关闭其他占用网络的标签。若仍不稳定，检查本地网络连接后重新打开页面，看片浏览器会尝试恢复上次进度。</p>
+        </details>
+        <details>
+          <summary>看片浏览器的历史记录保存在哪里？</summary>
+          <p>历史记录保存在当前设备的本地存储中，不会上传到服务器。清除浏览器数据时，历史与收藏会一并被移除。</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- DOWNLOAD -->
+  <section id="download">
+    <div class="wrap">
+      <div class="band">
+        <div>
+          <h2>获取看片浏览器</h2>
+          <p>下载安装后即可体验视频直达播放、多标签并行与进度记忆。安装包与更新说明将随版本发布同步更新。</p>
+        </div>
+        <a class="btn btn-primary" href="#" data-download-placeholder="true" aria-disabled="true" tabindex="-1">下载</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="brand" href="#top">
+          <svg class="mark" viewBox="0 0 64 64" aria-hidden="true">
+            <rect width="64" height="64" rx="14" fill="#12283d"/>
+            <circle cx="32" cy="32" r="19" fill="none" stroke="#12b58c" stroke-width="4"/>
+            <path d="M27 23l16 9-16 9z" fill="#12b58c"/>
+          </svg>
+          <span class="name">看片浏览器</span>
+        </a>
+        <p>看片浏览器是一款以视频播放为核心的浏览器，帮助你在同一窗口内完成观看、检索与资料查阅。</p>
+      </div>
+      <div class="foot-links">
+        <div>
+          <h4>页面导航</h4>
+          <a href="#features">核心功能</a>
+          <a href="#howto">使用方式</a>
+          <a href="#compare">版本对比</a>
+          <a href="#faq">常见问题</a>
+        </div>
+        <div>
+          <h4>使用提示</h4>
+          <a href="#howto">初次设置</a>
+          <a href="#faq">进度与收藏</a>
+          <a href="#download">下载入口</a>
+        </div>
+      </div>
+    </div>
+    <div class="copyright">看片浏览器 · 页面内容以产品实际功能为准</div>
+  </div>
+</footer>
+
+</body>
+</html>
