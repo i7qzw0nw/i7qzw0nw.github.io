@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>91挑桃-挑桃网热门黑料爆料_91挑桃热点大赛吃瓜合集</title>
+<meta name="description" content="91挑桃是聚合网络热门黑料与爆料的热点内容站，整理91挑桃大赛吃瓜合集、热门事件脉络与网友讨论，按主题分区呈现，方便快速浏览与持续关注。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23f0526a'/%3E%3Cpath d='M32 20c-7-6-16-2-16 6 0 9 10 16 16 20 6-4 16-11 16-20 0-8-9-12-16-6z' fill='%23fff'/%3E%3Ccircle cx='32' cy='34' r='4' fill='%23f0526a'/%3E%3C/svg%3E">
+<style>
+  :root{
+    --bg:#fdf7f4;
+    --ink:#241a1d;
+    --sub:#6d5c61;
+    --brand:#e8455f;
+    --brand-deep:#b32b42;
+    --peach:#ffd9cf;
+    --line:#f0dcd5;
+    --card:#ffffff;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,-apple-system,sans-serif;
+    background:var(--bg);color:var(--ink);line-height:1.75;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;text-decoration:none}
+  img,svg{display:block;max-width:100%}
+  .wrap{width:min(1120px,92vw);margin:0 auto}
+
+  /* 页头 */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(253,247,244,.92);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .navbar{display:flex;align-items:center;gap:18px;padding:14px 0}
+  .logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:20px;letter-spacing:.5px;color:var(--brand-deep)}
+  .logo .mark{width:34px;height:34px;flex:none}
+  nav.main{margin-left:auto;display:flex;gap:22px;font-size:15px;color:var(--sub)}
+  nav.main a{position:relative;padding:4px 0}
+  nav.main a:hover{color:var(--brand)}
+  nav.main a::after{content:"";position:absolute;left:0;bottom:-2px;width:0;height:2px;background:var(--brand);transition:width .25s}
+  nav.main a:hover::after{width:100%}
+  .nav-cta{background:var(--brand);color:#fff;padding:8px 16px;border-radius:999px;font-size:14px;font-weight:600;white-space:nowrap}
+  .nav-cta:hover{background:var(--brand-deep)}
+  .menu-toggle{display:none;margin-left:auto;background:none;border:1px solid var(--line);border-radius:10px;padding:6px 10px;font-size:14px;color:var(--brand-deep)}
+
+  /* 首屏 */
+  .hero{padding:56px 0 40px;position:relative;overflow:hidden}
+  .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:center}
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;background:var(--peach);color:var(--brand-deep);font-size:13px;font-weight:600;padding:5px 12px;border-radius:999px}
+  h1{font-size:clamp(34px,5vw,54px);line-height:1.15;font-weight:900;letter-spacing:1px;margin:18px 0 16px;color:var(--ink)}
+  h1 .dot{color:var(--brand)}
+  .lede{font-size:16px;color:var(--sub);max-width:34em}
+  .hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border-radius:12px;font-weight:700;font-size:15px;transition:.2s}
+  .btn-primary{background:var(--brand);color:#fff;box-shadow:0 8px 20px -8px rgba(232,69,95,.7)}
+  .btn-primary:hover{background:var(--brand-deep);transform:translateY(-1px)}
+  .btn-ghost{border:1.5px solid var(--brand);color:var(--brand-deep)}
+  .btn-ghost:hover{background:#fff}
+  .hero-visual{position:relative;border-radius:24px;background:linear-gradient(150deg,#ffe7de,#ffd0c5 55%,#f9b9ae);padding:26px;min-height:280px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 18px 40px -22px rgba(179,43,66,.55)}
+  .hero-visual .tag{background:rgba(255,255,255,.8);border-radius:10px;padding:5px 11px;font-size:12.5px;font-weight:600;color:var(--brand-deep);align-self:flex-start}
+  .hero-visual p{font-size:14.5px;color:#7d3b47;background:rgba(255,255,255,.72);padding:12px 14px;border-radius:12px}
+  .stat-row{display:flex;gap:18px;margin-top:22px;flex-wrap:wrap}
+  .stat{background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px 18px;min-width:110px}
+  .stat b{display:block;font-size:20px;color:var(--brand-deep)}
+  .stat span{font-size:12.5px;color:var(--sub)}
+
+  /* 通用区块 */
+  section{padding:44px 0}
+  .sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:26px;flex-wrap:wrap}
+  .sec-head h2{font-size:clamp(22px,3vw,28px);font-weight:800;letter-spacing:.5px}
+  .sec-head h2 em{font-style:normal;color:var(--brand)}
+  .sec-head p{font-size:14px;color:var(--sub);max-width:40em}
+
+  /* 热点卡片 */
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px;display:flex;flex-direction:column;gap:10px;transition:.22s}
+  .card:hover{transform:translateY(-3px);box-shadow:0 16px 30px -20px rgba(179,43,66,.5);border-color:#f3bfb3}
+  .card .k{font-size:12px;font-weight:700;color:var(--brand);letter-spacing:1px}
+  .card h3{font-size:18px;font-weight:800;line-height:1.4}
+  .card p{font-size:14px;color:var(--sub);flex:1}
+  .card .meta{font-size:12.5px;color:#a08e93;display:flex;gap:12px;border-top:1px dashed var(--line);padding-top:10px}
+
+  /* 大赛吃瓜合集 */
+  .heat{background:#fff;border:1px solid var(--line);border-radius:22px;padding:26px;display:grid;grid-template-columns:1fr 1fr;gap:26px}
+  .heat-list{list-style:none;display:flex;flex-direction:column;gap:14px}
+  .heat-list li{display:flex;gap:14px;align-items:flex-start;padding-bottom:14px;border-bottom:1px dashed var(--line)}
+  .heat-list li:last-child{border-bottom:none;padding-bottom:0}
+  .rank{flex:none;width:26px;height:26px;border-radius:8px;background:var(--peach);color:var(--brand-deep);font-size:13px;font-weight:800;display:grid;place-items:center;margin-top:2px}
+  .heat-list h4{font-size:15.5px;font-weight:700;margin-bottom:2px}
+  .heat-list span{font-size:13px;color:var(--sub)}
+  .heat-note{background:linear-gradient(160deg,#fff4f0,#ffe4db);border-radius:16px;padding:22px;display:flex;flex-direction:column;gap:12px}
+  .heat-note h3{font-size:17px;color:var(--brand-deep)}
+  .heat-note p{font-size:14px;color:#7a4a52}
+  .heat-note .mini{font-size:12.5px;color:#a4737a;border-top:1px dashed #f0c9bd;padding-top:10px}
+
+  /* 分区浏览 */
+  .channels{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+  .ch{background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px;text-align:left;transition:.2s}
+  .ch:hover{border-color:#f3bfb3;background:#fffaf8}
+  .ch .ico{width:38px;height:38px;border-radius:11px;background:var(--peach);display:grid;place-items:center;margin-bottom:12px}
+  .ch h3{font-size:15.5px;font-weight:800;margin-bottom:4px}
+  .ch p{font-size:13px;color:var(--sub)}
+
+  /* 正文说明 */
+  .about{display:grid;grid-template-columns:1.1fr .9fr;gap:34px;align-items:start}
+  .about h2{font-size:clamp(22px,3vw,27px);font-weight:800;margin-bottom:16px}
+  .about p{font-size:15px;color:#4a3a3e;margin-bottom:14px}
+  .about strong{color:var(--brand-deep)}
+  .aside-box{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px}
+  .aside-box h3{font-size:16px;font-weight:800;margin-bottom:12px}
+  .aside-box ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+  .aside-box li{font-size:13.8px;color:var(--sub);padding-left:18px;position:relative}
+  .aside-box li::before{content:"";position:absolute;left:0;top:9px;width:7px;height:7px;border-radius:50%;background:var(--brand)}
+
+  /* 订阅条 */
+  .cta-band{background:linear-gradient(120deg,#b32b42,#e8455f 60%,#f2705f);border-radius:24px;color:#fff;padding:36px;display:flex;align-items:center;gap:28px;flex-wrap:wrap;justify-content:space-between}
+  .cta-band h2{font-size:clamp(20px,2.6vw,25px);font-weight:800;margin-bottom:6px}
+  .cta-band p{font-size:14px;color:#ffe0da;max-width:38em}
+  .cta-band .btn-primary{background:#fff;color:var(--brand-deep);box-shadow:none}
+  .cta-band .btn-primary:hover{background:#ffe9e3}
+
+  /* 页尾 */
+  footer{border-top:1px solid var(--line);padding:34px 0 40px;margin-top:20px}
+  .foot-grid{display:flex;gap:30px;flex-wrap:wrap;justify-content:space-between;align-items:flex-start}
+  .foot-brand{max-width:300px}
+  .foot-brand .logo{font-size:18px;margin-bottom:10px}
+  .foot-brand p{font-size:13px;color:var(--sub)}
+  .foot-links{display:flex;gap:44px;flex-wrap:wrap}
+  .foot-links h4{font-size:13.5px;font-weight:800;margin-bottom:10px;color:var(--ink)}
+  .foot-links a{display:block;font-size:13px;color:var(--sub);margin-bottom:7px}
+  .foot-links a:hover{color:var(--brand)}
+  .copy{margin-top:26px;border-top:1px dashed var(--line);padding-top:16px;font-size:12.5px;color:#a08e93;display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between}
+
+  @media (max-width:900px){
+    .hero-grid,.heat,.about{grid-template-columns:1fr}
+    .cards{grid-template-columns:1fr 1fr}
+    .channels{grid-template-columns:1fr 1fr}
+    .hero-visual{min-height:auto;order:-1}
+  }
+  @media (max-width:680px){
+    nav.main{display:none}
+    .menu-toggle{display:block}
+    .nav-cta{display:none}
+    .navbar{flex-wrap:wrap}
+    .cards,.channels{grid-template-columns:1fr}
+    .hero{padding:34px 0 26px}
+    .hero-visual{padding:18px}
+    section{padding:32px 0}
+    .cta-band{padding:24px}
+    h1{font-size:32px}
+  }
+</style>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+<header>
+  <div class="wrap navbar">
+    <a class="logo" href="#top" aria-label="91挑桃 首页">
+      <svg class="mark" viewBox="0 0 64 64" aria-hidden="true">
+        <rect width="64" height="64" rx="14" fill="#e8455f"/>
+        <path d="M32 20c-7-6-16-2-16 6 0 9 10 16 16 20 6-4 16-11 16-20 0-8-9-12-16-6z" fill="#fff"/>
+        <circle cx="32" cy="33" r="4" fill="#e8455f"/>
+      </svg>
+      <span>91挑桃</span>
+    </a>
+    <nav class="main" aria-label="主导航">
+      <a href="#hot">今日热点</a>
+      <a href="#dachang">大赛吃瓜</a>
+      <a href="#channels">内容分区</a>
+      <a href="#about">关于本站</a>
+      <a href="#follow">订阅关注</a>
+    </nav>
+    <a class="nav-cta" href="#hot">看最新爆料</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- 首屏 -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2l2.6 6.6L21 10l-5 4.4L17.4 21 12 17.6 6.6 21 8 14.4 3 10l6.4-1.4z" fill="#b32b42"/></svg>
+          热点速览 · 持续更新
+        </span>
+        <h1>91挑桃<span class="dot">。</span></h1>
+        <p class="lede">91挑桃聚合网络热门黑料、爆料与网友讨论，把散落各处的瓜按主题梳理成清晰的脉络。打开就能读到事件梗概、关键节点与争议焦点，不必在信息流里反复翻找。</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#hot">浏览今日热点
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a class="btn btn-ghost" href="#dachang">进入大赛吃瓜合集</a>
+        </div>
+        <div class="stat-row">
+          <div class="stat"><b>每日</b><span>热点更新</span></div>
+          <div class="stat"><b>4 大</b><span>内容分区</span></div>
+          <div class="stat"><b>按主题</b><span>梳理事件脉络</span></div>
+        </div>
+      </div>
+      <div class="hero-visual" aria-hidden="true">
+        <span class="tag">91挑桃 · 热点雷达</span>
+        <svg viewBox="0 0 300 130" role="presentation" style="width:100%;height:auto">
+          <rect x="6" y="18" width="196" height="20" rx="10" fill="#ffffff" opacity=".85"/>
+          <rect x="6" y="48" width="150" height="20" rx="10" fill="#ffffff" opacity=".65"/>
+          <rect x="6" y="78" width="172" height="20" rx="10" fill="#ffffff" opacity=".5"/>
+          <circle cx="250" cy="52" r="34" fill="#ffffff" opacity=".85"/>
+          <path d="M250 30c-7-6-16-2-16 6 0 9 10 15 16 19 6-4 16-10 16-19 0-8-9-12-16-6z" fill="#e8455f"/>
+        </svg>
+        <p>把热度高的事件放在一起看，更容易分辨哪些是事实、哪些还停留在讨论阶段。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 今日热点 -->
+  <section id="hot">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>今日<em>热点</em>与爆料摘要</h2>
+        <p>按讨论热度排列，每条给出事件梗概与当前状态，点开可继续查看后续更新。</p>
+      </div>
+      <div class="cards">
+        <article class="card">
+          <span class="k">热点 · 讨论中</span>
+          <h3>大赛吃瓜合集更新</h3>
+          <p>91挑桃把近期网络流传的大赛相关爆料汇成一辑，按时间顺序排列，并标注哪些说法已有回应、哪些仍在等待确认。</p>
+          <div class="meta"><span>热度上升</span><span>持续补充</span></div>
+        </article>
+        <article class="card">
+          <span class="k">黑料 · 待核实</span>
+          <h3>网友爆料线索梳理</h3>
+          <p>针对流传较广的几条爆料，整理其出处、流传路径与网友主要质疑点，帮助读者判断信息可信度而非直接下结论。</p>
+          <div class="meta"><span>线索整理</span><span>多方说法</span></div>
+        </article>
+        <article class="card">
+          <span class="k">回顾 · 已沉淀</span>
+          <h3>旧热点去向追踪</h3>
+          <p>曾登上热议榜的事件后来怎么样了？本栏记录事件后续与最新状态，避免只看到开头、看不到结果。</p>
+          <div class="meta"><span>后续更新</span><span>状态标注</span></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 大赛吃瓜合集 -->
+  <section id="dachang">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>大赛<em>吃瓜</em>合集</h2>
+        <p>围绕“大赛”话题的热点内容集中呈现，按关注度排序，方便一次看全脉络。</p>
+      </div>
+      <div class="heat">
+        <ol class="heat-list">
+          <li>
+            <span class="rank">1</span>
+            <div>
+              <h4>大赛话题为何突然升温</h4>
+              <span>从最初的一条爆料到多平台扩散，梳理热度上升的几个关键节点。</span>
+            </div>
+          </li>
+          <li>
+            <span class="rank">2</span>
+            <div>
+              <h4>当事人回应与网友分歧</h4>
+              <span>汇总公开回应内容，并记录评论区出现的不同看法。</span>
+            </div>
+          </li>
+          <li>
+            <span class="rank">3</span>
+            <div>
+              <h4>被反复转发的几张截图</h4>
+              <span>说明截图来源与流传范围，提示其中尚未被证实的信息。</span>
+            </div>
+          </li>
+          <li>
+            <span class="rank">4</span>
+            <div>
+              <h4>同类事件横向对照</h4>
+              <span>把本次大赛话题与过往相似事件并排看，找出共通点。</span>
+            </div>
+          </li>
+        </ol>
+        <div class="heat-note">
+          <h3>阅读这类内容前，先记住三点</h3>
+          <p>第一，爆料不等于事实，未经回应的说法应保持保留态度；第二，截图易被截断与拼接，看原始出处比看二次转发更可靠；第三，热度高不代表结论成立。</p>
+          <p>91挑桃在大赛吃瓜合集中，会尽量标注每条信息的来源与时间，让读者自己判断，而不是替读者下判断。</p>
+          <div class="mini">提示：本页内容为信息汇总，涉及个人评价的部分仅代表网友讨论，不代表本站立场。</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 内容分区 -->
+  <section id="channels">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>按<em>分区</em>浏览</h2>
+        <p>不同需求走不同入口：想看最新、想追后续、想核对来源，各有一条路径。</p>
+      </div>
+      <div class="channels">
+        <a class="ch" href="#hot">
+          <div class="ico">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M13 2L4 14h6l-1 8 9-12h-6z" fill="#b32b42"/></svg>
+          </div>
+          <h3>热点榜单</h3>
+          <p>当天讨论度较高的事件按序排列，附一句梗概。</p>
+        </a>
+        <a class="ch" href="#dachang">
+          <div class="ico">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="#b32b42" stroke-width="2"/><path d="M12 7v5l3 2" stroke="#b32b42" stroke-width="2" stroke-linecap="round"/></svg>
+          </div>
+          <h3>大赛吃瓜</h3>
+          <p>大赛相关爆料与讨论的集中入口，按脉络整理。</p>
+        </a>
+        <a class="ch" href="#about">
+          <div class="ico">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 6h16M4 12h10M4 18h13" stroke="#b32b42" stroke-width="2" stroke-linecap="round"/></svg>
+          </div>
+          <h3>来源核对</h3>
+          <p>查看每条信息的出处说明与更新时间标注方式。</p>
+        </a>
+        <a class="ch" href="#follow">
+          <div class="ico">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 4c-4 0-7 3-7 7v5l-2 3h18l-2-3v-5c0-4-3-7-7-7z" stroke="#b32b42" stroke-width="2" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>订阅关注</h3>
+          <p>订阅更新提醒，热点有后续时第一时间收到。</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 关于 -->
+  <section id="about">
+    <div class="wrap about">
+      <div>
+        <h2>91挑桃怎么用</h2>
+        <p><strong>91挑桃</strong>是一个面向热点内容读者的信息聚合首页。它不生产爆料，而是把网络上流传较广的热门事件、黑料线索与大赛吃瓜话题收集起来，按主题分栏，配上时间与来源说明，让阅读更有顺序。</p>
+        <p>打开 91挑桃 后，可以先去“今日热点”看当天值得关注的事件；如果对某个话题想追根究底，就进入对应合集，按时间线往下读；遇到说法冲突的地方，页面会并列呈现多方表述，而不是只保留一种声音。</p>
+        <p>我们更在意读者读完能否形成自己的判断。因此 91挑桃 在每条内容旁都会标注状态：讨论中、待核实、已沉淀。状态不是结论，只是提示这条信息目前走到了哪一步。后续有新进展时，状态会随之调整。</p>
+        <p>如果你习惯用手机浏览，91挑桃 的页面同样按小屏重新排布，标题、正文与卡片逐层展开，滑动阅读时不需要反复缩放。</p>
+      </div>
+      <aside class="aside-box">
+        <h3>内容说明</h3>
+        <ul>
+          <li>信息以公开讨论与网友爆料为主，本站做汇总与脉络整理。</li>
+          <li>未经证实的说法会明确标注“待核实”，不作定性。</li>
+          <li>涉及个人隐私的内容不展开、不扩散。</li>
+          <li>每条热点保留更新时间，便于判断信息新鲜度。</li>
+          <li>如发现事实有误，可通过页尾联系方式反馈更正。</li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <!-- 订阅 -->
+  <section id="follow">
+    <div class="wrap">
+      <div class="cta-band">
+        <div>
+          <h2>热点有后续，别错过</h2>
+          <p>订阅后，当 91挑桃 收录的事件出现新进展或状态变化时，会推送提醒。也欢迎把你看到的大赛吃瓜线索发给我们，一起把脉络补全。</p>
+        </div>
+        <a class="btn btn-primary" href="#top">返回顶部浏览</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="logo" href="#top">
+          <svg class="mark" viewBox="0 0 64 64" aria-hidden="true">
+            <rect width="64" height="64" rx="14" fill="#e8455f"/>
+            <path d="M32 20c-7-6-16-2-16 6 0 9 10 16 16 20 6-4 16-11 16-20 0-8-9-12-16-6z" fill="#fff"/>
+            <circle cx="32" cy="33" r="4" fill="#e8455f"/>
+          </svg>
+          <span>91挑桃</span>
+        </a>
+        <p>91挑桃专注网络热点与大赛吃瓜内容的脉络梳理，做信息汇总，不做事实之外的判断。</p>
+      </div>
+      <div class="foot-links">
+        <div>
+          <h4>浏览</h4>
+          <a href="#hot">今日热点</a>
+          <a href="#dachang">大赛吃瓜合集</a>
+          <a href="#channels">内容分区</a>
+        </div>
+        <div>
+          <h4>了解</h4>
+          <a href="#about">关于本站</a>
+          <a href="#about">内容说明</a>
+          <a href="#follow">订阅关注</a>
+        </div>
+        <div>
+          <h4>反馈</h4>
+          <a href="#about">事实更正</a>
+          <a href="#follow">线索投稿</a>
+        </div>
+      </div>
+    </div>
+    <div class="copy">
+      <span>© 2024 91挑桃 · 内容为公开信息汇总，不代表本站立场</span>
+      <span>阅读请保持独立判断，理性吃瓜</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
